@@ -1,31 +1,236 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>직장생활 해결소</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 24px;
+      position: sticky;
+      top: 0;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #2563eb;
+    }
+
+    .menu {
+      display: flex;
+      gap: 18px;
+      font-size: 15px;
+    }
+
+    .menu a {
+      color: #374151;
+      text-decoration: none;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 48px auto 28px;
+      padding: 56px 32px;
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.18);
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: 46px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin: 0 0 28px;
+      color: #dbeafe;
+    }
+
+    .button {
+      display: inline-block;
+      background: white;
+      color: #1d4ed8;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 24px;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 19px;
+    }
+
+    .card p {
+      color: #6b7280;
+      font-size: 15px;
+    }
+
+    .notice {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 16px;
+      padding: 18px 20px;
+      color: #9a3412;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 24px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    @media (max-width: 800px) {
+      .nav {
+        align-items: flex-start;
+        gap: 12px;
+        flex-direction: column;
+      }
+
+      .menu {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .hero {
+        margin: 24px 16px;
+        padding: 36px 24px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>직장생활 해결소</h1>
-  <p>노무·근태·징계·직장 내 괴롭힘을 쉽게 풀어드립니다.</p>
+  <header>
+    <div class="nav">
+      <div class="logo">직장생활 해결소</div>
+      <nav class="menu">
+        <a href="#">직장 내 괴롭힘</a>
+        <a href="#">징계·경고장</a>
+        <a href="#">연차·근태</a>
+        <a href="#">퇴사·임금</a>
+        <a href="#">문서양식</a>
+      </nav>
+    </div>
+  </header>
 
-  <h2>주요 메뉴</h2>
-  <ul>
-    <li>직장 내 괴롭힘</li>
-    <li>징계·경고장</li>
-    <li>연차·근태</li>
-    <li>퇴사·임금</li>
-    <li>문서양식</li>
-  </ul>
+  <main>
+    <section class="hero">
+      <h1>직장생활 문제,<br />혼자 고민하지 마세요.</h1>
+      <p>노무·근태·징계·직장 내 괴롭힘을 쉽게 이해할 수 있도록 정리합니다.</p>
+      <a class="button" href="#">직장 내 괴롭힘 체크리스트 시작하기</a>
+    </section>
 
-  <h2>인기 주제</h2>
-  <ul>
-    <li>직장 내 괴롭힘 기준은?</li>
-    <li>경고장 3번이면 해고될까?</li>
-    <li>연차 사용 거부는 불법일까?</li>
-    <li>퇴직금은 어떻게 계산할까?</li>
-  </ul>
+    <section class="section">
+      <h2>인기 주제</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>직장 내 괴롭힘 기준은?</h3>
+          <p>괴롭힘으로 볼 수 있는 상황과 신고 전 확인할 내용을 정리합니다.</p>
+        </div>
+        <div class="card">
+          <h3>경고장 3번이면 해고될까?</h3>
+          <p>경고장 횟수보다 중요한 징계 사유, 절차, 양정 기준을 살펴봅니다.</p>
+        </div>
+        <div class="card">
+          <h3>연차 사용 거부는 불법일까?</h3>
+          <p>연차 사용 시기, 회사의 시기변경권, 실무상 주의점을 설명합니다.</p>
+        </div>
+        <div class="card">
+          <h3>퇴직금은 어떻게 계산할까?</h3>
+          <p>퇴직금 계산 구조와 확인해야 할 기본 항목을 쉽게 안내합니다.</p>
+        </div>
+      </div>
+    </section>
 
-  <button>직장 내 괴롭힘 체크리스트 시작하기</button>
+    <section class="section">
+      <h2>이 사이트에서 할 수 있는 것</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>체크리스트</h3>
+          <p>직장 내 괴롭힘, 징계, 근태 문제를 단계별로 확인합니다.</p>
+        </div>
+        <div class="card">
+          <h3>계산기</h3>
+          <p>연차, 퇴직금, 해고예고수당 등 실무 계산 기능을 추가할 예정입니다.</p>
+        </div>
+        <div class="card">
+          <h3>문서양식</h3>
+          <p>신고서, 면담기록, 경고장, 사건 경위서 양식을 제공합니다.</p>
+        </div>
+        <div class="card">
+          <h3>실무 가이드</h3>
+          <p>근로자와 관리자 모두 이해할 수 있는 기준을 쉽게 설명합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="notice">
+        본 사이트의 내용은 일반적인 정보 제공 목적이며, 개별 사건에 대한 법률 자문이 아닙니다.
+        구체적인 사안은 노무사, 변호사 등 전문가 상담을 권장합니다.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 직장생활 해결소. All rights reserved.
+  </footer>
 </body>
 </html>
