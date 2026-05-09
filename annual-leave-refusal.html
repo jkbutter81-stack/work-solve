@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>연차 사용 거부는 불법일까? | 직장생활 해결소</title>
+  <style>
+    :root {
+      --navy: #172033;
+      --blue: #2563eb;
+      --gray: #64748b;
+      --line: #e2e8f0;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 28%),
+        linear-gradient(180deg, #fffaf0 0%, #f8fafc 55%, #ffffff 100%);
+      color: var(--navy);
+      line-height: 1.75;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--navy);
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 10px 20px rgba(23, 32, 51, 0.16);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-text strong {
+      font-size: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .menu {
+      display: flex;
+      gap: 16px;
+      font-size: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: #334155;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .menu a:hover {
+      color: var(--blue);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      padding: 46px 0;
+      align-items: start;
+    }
+
+    .article {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 38px;
+      box-shadow: var(--shadow);
+    }
+
+    .breadcrumb {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #dcfce7;
+      color: #047857;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 42px;
+      line-height: 1.18;
+      letter-spacing: -1.5px;
+    }
+
+    .summary {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+      border-radius: 18px;
+      padding: 20px;
+      font-weight: 700;
+      margin: 24px 0;
+    }
+
+    .article h2 {
+      margin: 38px 0 14px;
+      font-size: 28px;
+      letter-spacing: -0.7px;
+    }
+
+    .article h3 {
+      margin: 26px 0 10px;
+      font-size: 21px;
+    }
+
+    .article p {
+      color: #475569;
+      font-size: 17px;
+      margin: 0 0 16px;
+    }
+
+    .article ul,
+    .article ol {
+      color: #475569;
+      padding-left: 24px;
+      font-size: 17px;
+    }
+
+    .article li {
+      margin: 8px 0;
+    }
+
+    .example-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+
+    .example-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .checklist-link {
+      background: linear-gradient(135deg, #047857, #065f46);
+      color: white;
+      border-radius: 22px;
+      padding: 24px;
+      margin-top: 34px;
+    }
+
+    .checklist-link h2 {
+      margin: 0 0 10px;
+      color: white;
+      font-size: 25px;
+    }
+
+    .checklist-link p {
+      color: #d1fae5;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 900;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      margin-right: 8px;
+      margin-top: 8px;
+    }
+
+    .btn-white {
+      background: white;
+      color: #047857;
+    }
+
+    .notice {
+      margin-top: 28px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: #9a3412;
+      font-weight: 700;
+    }
+
+    .side-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 92px;
+    }
+
+    .side-card h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .side-card p {
+      color: #475569;
+      margin: 0 0 16px;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .side-list a {
+      display: block;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      margin-top: 36px;
+      padding: 28px 0;
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: var(--gray);
+      margin-left: 12px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .article-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-card {
+        position: static;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .menu {
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .article {
+        padding: 26px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .article h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html">
+        <div class="brand-icon">✓</div>
+        <div class="brand-text">
+          <strong>직장생활 해결소</strong>
+          <span>무료 노무 체크리스트 & 문서양식</span>
+        </div>
+      </a>
+
+      <nav class="menu">
+        <a href="index.html#tools">무료도구</a>
+        <a href="index.html#checklist">체크리스트</a>
+        <a href="index.html#documents">무료양식</a>
+        <a href="about.html">소개</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="article-layout">
+      <article class="article">
+        <div class="breadcrumb">홈 &gt; 연차·근태 &gt; 연차 사용</div>
+        <span class="badge">연차·근태</span>
+
+        <h1>연차 사용 거부는 불법일까?</h1>
+
+        <p>
+          연차를 신청했는데 회사가 “안 된다”고 말하면 근로자 입장에서는 당황스럽습니다.
+          반대로 회사 입장에서는 바쁜 시기나 인력 공백 때문에 연차 사용을 조정하고 싶은 경우가 있습니다.
+        </p>
+
+        <div class="summary">
+          결론부터 말하면, 연차는 원칙적으로 근로자가 청구한 시기에 사용할 수 있어야 합니다.
+          다만 회사는 그 시기에 연차를 주는 것이 사업 운영에 막대한 지장이 있는 경우에 한해
+          시기를 변경할 수 있습니다.
+        </div>
+
+        <h2>1. 연차는 근로자가 원하는 시기에 사용하는 것이 원칙입니다</h2>
+        <p>
+          연차유급휴가는 근로자의 휴식권을 보장하기 위한 제도입니다.
+          따라서 회사가 단순히 “바쁘다”, “분위기가 안 좋다”, “상사가 허락하지 않았다”는 이유만으로
+          연차 사용을 쉽게 거부하기는 어렵습니다.
+        </p>
+
+        <p>
+          중요한 기준은 회사가 연차 자체를 막을 수 있느냐가 아니라,
+          근로자가 신청한 바로 그 시기에 휴가를 주는 것이 사업 운영에 막대한 지장을 주는지입니다.
+        </p>
+
+        <h2>2. 회사의 시기변경권이란?</h2>
+        <p>
+          회사가 연차 사용 날짜를 바꾸자고 할 수 있는 권리를 보통 시기변경권이라고 합니다.
+          하지만 이 권리는 아무 때나 쓸 수 있는 권한이 아닙니다.
+        </p>
+
+        <p>
+          최근 판례 취지상 시기변경권이 적법한지 판단할 때는 근로자가 담당하는 업무의 내용,
+          휴가 시기의 예상 근무인원과 업무량, 휴가 청구 시점, 대체근로자 확보 가능성 등을 종합적으로 봅니다.
+        </p>
+
+        <div class="example-box">
+          <strong>시기변경이 문제될 수 있는 예시</strong>
+          <ul>
+            <li>단순히 팀 분위기나 상사의 기분 때문에 연차를 막는 경우</li>
+            <li>구체적인 업무 차질 설명 없이 일괄적으로 연차를 거부하는 경우</li>
+            <li>연차 사용자를 불이익하게 평가하거나 눈치를 주는 경우</li>
+            <li>특정 직원에게만 반복적으로 연차 사용을 제한하는 경우</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <strong>시기 조정이 검토될 수 있는 예시</strong>
+          <ul>
+            <li>해당 직원이 반드시 처리해야 하는 긴급 업무가 있는 경우</li>
+            <li>동시에 많은 인원이 휴가를 신청해 정상 운영이 어려운 경우</li>
+            <li>대체 인력을 확보하기 어려운 특수 업무가 있는 경우</li>
+            <li>휴가 신청 시점이 너무 촉박해 업무 조정이 현실적으로 어려운 경우</li>
+          </ul>
+        </div>
+
+        <h2>3. “당일 연차”는 어떻게 봐야 할까?</h2>
+        <p>
+          당일 연차는 회사 규정, 업무 특성, 신청 사유에 따라 판단이 달라질 수 있습니다.
+          갑작스러운 질병, 가족 돌봄, 긴급 사정처럼 불가피한 사유가 있다면 회사도 이를 고려할 필요가 있습니다.
+        </p>
+
+        <p>
+          다만 회사에 연차 신청 절차가 있고, 업무 인수인계가 필요한 직무라면
+          사전 신청 없이 일방적으로 출근하지 않는 방식은 무단결근 문제로 번질 수 있습니다.
+        </p>
+
+        <h2>4. 근로자가 확인해야 할 것</h2>
+        <p>
+          연차 사용을 거부당했거나 조정 요청을 받았다면 먼저 아래 내용을 확인해보는 것이 좋습니다.
+        </p>
+
+        <ul>
+          <li>연차 신청 날짜와 신청 방법</li>
+          <li>회사가 거부하거나 조정 요청한 구체적인 이유</li>
+          <li>업무상 대체 가능성 또는 인수인계 가능성</li>
+          <li>취업규칙이나 사내 연차 신청 절차</li>
+          <li>다른 직원에게도 같은 기준이 적용되는지</li>
+          <li>연차 사용을 이유로 불이익을 받은 정황이 있는지</li>
+        </ul>
+
+        <h2>5. 회사와 관리자가 조심해야 할 점</h2>
+        <p>
+          관리자는 연차 사용을 단순히 승인·불승인 문제로만 보면 안 됩니다.
+          연차는 근로자의 법정 권리와 연결되어 있으므로, 제한이 필요한 경우에는 구체적인 사유와 대체 시기를 함께 제시하는 것이 좋습니다.
+        </p>
+
+        <p>
+          특히 “우리 팀은 바빠서 연차 못 쓴다”, “그날 쉬면 불이익이 있을 수 있다”는 식의 표현은
+          분쟁의 원인이 될 수 있습니다.
+        </p>
+
+        <h2>6. 연차 거부를 당했다면 어떻게 정리할까?</h2>
+        <p>
+          연차 사용과 관련한 분쟁은 기록이 중요합니다. 아래 내용을 정리해두면 상황을 설명하기 쉬워집니다.
+        </p>
+
+        <ol>
+          <li>연차 신청일과 사용 희망일</li>
+          <li>신청 방식: 메신저, 이메일, 인사시스템 등</li>
+          <li>회사의 답변 내용</li>
+          <li>거부 또는 시기변경 사유</li>
+          <li>대체 날짜 제안 여부</li>
+          <li>연차 사용 이후 불이익 정황</li>
+        </ol>
+
+        <div class="checklist-link">
+          <h2>직장생활 문제를 기록으로 남겨두세요</h2>
+          <p>
+            연차, 근태, 징계, 괴롭힘 문제는 결국 사실관계와 기록이 중요합니다.
+            현재 제공 중인 무료 양식으로 사건 내용을 먼저 정리해볼 수 있습니다.
+          </p>
+          <a class="btn btn-white" href="index.html#documents">무료 양식 받기</a>
+          <a class="btn btn-white" href="warning-dismissal.html">경고장 글 보기</a>
+        </div>
+
+        <div class="notice">
+          본 글은 일반적인 정보 제공 목적이며, 개별 사건에 대한 법률 자문이 아닙니다.
+          실제 판단은 구체적인 사실관계, 회사 규정, 근로계약, 관련 법령에 따라 달라질 수 있습니다.
+          구체적인 사안은 공인노무사, 변호사 등 전문가 상담을 권장합니다.
+        </div>
+      </article>
+
+      <aside class="side-card">
+        <h2>관련 자료</h2>
+        <p>연차 문제도 기록과 기준 확인이 중요합니다.</p>
+
+        <div class="side-list">
+          <a href="warning-dismissal.html">경고장 3번이면 해고될까?</a>
+          <a href="harassment-standard.html">직장 내 괴롭힘 기준은?</a>
+          <a href="index.html#documents">무료 문서양식 다운로드</a>
+          <a href="contact.html">오류 제보 및 문의</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>© 2026 직장생활 해결소. All rights reserved.</div>
+      <div>
+        <a href="about.html">소개</a>
+        <a href="contact.html">문의</a>
+        <a href="privacy.html">개인정보처리방침</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
