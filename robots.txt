@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://work-solve.jk-butter81.workers.dev/sitemap.xml
