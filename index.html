@@ -19,6 +19,7 @@
       padding: 18px 24px;
       position: sticky;
       top: 0;
+      z-index: 10;
     }
 
     .nav {
@@ -76,6 +77,20 @@
       border-radius: 999px;
       font-weight: 700;
       text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .primary-button {
+      background: #2563eb;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
     }
 
     .section {
@@ -111,6 +126,67 @@
     .card p {
       color: #6b7280;
       font-size: 15px;
+    }
+
+    .checklist-box {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .question {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 0;
+    }
+
+    .question:last-child {
+      border-bottom: none;
+    }
+
+    .question p {
+      font-weight: 700;
+      margin: 0 0 12px;
+    }
+
+    .options {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .options label {
+      background: #f9fafb;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 24px;
+      padding: 22px;
+      border-radius: 16px;
+      display: none;
+    }
+
+    .result.low {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+    }
+
+    .result.middle {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #92400e;
+    }
+
+    .result.high {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
     }
 
     .notice {
@@ -153,6 +229,10 @@
       .grid {
         grid-template-columns: 1fr;
       }
+
+      .checklist-box {
+        padding: 22px;
+      }
     }
   </style>
 </head>
@@ -174,7 +254,7 @@
     <section class="hero">
       <h1>직장생활 문제,<br />혼자 고민하지 마세요.</h1>
       <p>노무·근태·징계·직장 내 괴롭힘을 쉽게 이해할 수 있도록 정리합니다.</p>
-      <a class="button" href="#">직장 내 괴롭힘 체크리스트 시작하기</a>
+      <a class="button" href="#checklist">직장 내 괴롭힘 체크리스트 시작하기</a>
     </section>
 
     <section class="section">
@@ -221,6 +301,63 @@
       </div>
     </section>
 
+    <section class="section" id="checklist">
+      <h2>직장 내 괴롭힘 체크리스트</h2>
+      <div class="checklist-box">
+        <p>
+          아래 질문에 답하면 현재 상황을 간단히 점검할 수 있습니다.
+          이 결과는 참고용이며, 개별 사건의 판단은 구체적인 사실관계에 따라 달라질 수 있습니다.
+        </p>
+
+        <form id="harassmentForm">
+          <div class="question">
+            <p>1. 특정인을 향한 폭언, 모욕, 따돌림, 업무배제 등이 있었나요?</p>
+            <div class="options">
+              <label><input type="radio" name="q1" value="1"> 예</label>
+              <label><input type="radio" name="q1" value="0"> 아니오</label>
+            </div>
+          </div>
+
+          <div class="question">
+            <p>2. 그 행동이 한 번이 아니라 반복적으로 발생했나요?</p>
+            <div class="options">
+              <label><input type="radio" name="q2" value="1"> 예</label>
+              <label><input type="radio" name="q2" value="0"> 아니오</label>
+            </div>
+          </div>
+
+          <div class="question">
+            <p>3. 업무상 필요하다고 보기 어려운 말이나 행동이었나요?</p>
+            <div class="options">
+              <label><input type="radio" name="q3" value="1"> 예</label>
+              <label><input type="radio" name="q3" value="0"> 아니오</label>
+            </div>
+          </div>
+
+          <div class="question">
+            <p>4. 해당 행동으로 인해 정신적 고통이나 업무상 어려움이 발생했나요?</p>
+            <div class="options">
+              <label><input type="radio" name="q4" value="1"> 예</label>
+              <label><input type="radio" name="q4" value="0"> 아니오</label>
+            </div>
+          </div>
+
+          <div class="question">
+            <p>5. 카카오톡, 이메일, 녹음, 목격자 등 증거자료가 있나요?</p>
+            <div class="options">
+              <label><input type="radio" name="q5" value="1"> 예</label>
+              <label><input type="radio" name="q5" value="0"> 아니오</label>
+            </div>
+          </div>
+
+          <br />
+          <button type="button" class="primary-button" onclick="showResult()">결과 확인하기</button>
+        </form>
+
+        <div id="resultBox" class="result"></div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="notice">
         본 사이트의 내용은 일반적인 정보 제공 목적이며, 개별 사건에 대한 법률 자문이 아닙니다.
@@ -232,5 +369,56 @@
   <footer>
     © 2026 직장생활 해결소. All rights reserved.
   </footer>
+
+  <script>
+    function showResult() {
+      let score = 0;
+      let unanswered = [];
+
+      for (let i = 1; i <= 5; i++) {
+        const selected = document.querySelector('input[name="q' + i + '"]:checked');
+
+        if (!selected) {
+          unanswered.push(i);
+        } else {
+          score += Number(selected.value);
+        }
+      }
+
+      const resultBox = document.getElementById("resultBox");
+
+      if (unanswered.length > 0) {
+        resultBox.style.display = "block";
+        resultBox.className = "result middle";
+        resultBox.innerHTML = "<h3>아직 답하지 않은 문항이 있습니다.</h3><p>" + unanswered.join(", ") + "번 문항에 답해주세요.</p>";
+        return;
+      }
+
+      resultBox.style.display = "block";
+
+      if (score <= 1) {
+        resultBox.className = "result low";
+        resultBox.innerHTML = `
+          <h3>점검 결과: 낮은 단계</h3>
+          <p>현재 응답만으로는 직장 내 괴롭힘 가능성을 단정하기 어렵습니다.</p>
+          <p>다만 비슷한 상황이 반복된다면 날짜, 장소, 발언 내용, 목격자, 증거자료를 정리해두는 것이 좋습니다.</p>
+        `;
+      } else if (score <= 3) {
+        resultBox.className = "result middle";
+        resultBox.innerHTML = `
+          <h3>점검 결과: 주의 단계</h3>
+          <p>직장 내 괴롭힘 이슈로 문제 제기될 가능성이 있습니다.</p>
+          <p>감정적으로 대응하기보다 사실관계, 반복성, 증거자료, 목격자 여부를 차분히 정리해보세요.</p>
+        `;
+      } else {
+        resultBox.className = "result high";
+        resultBox.innerHTML = `
+          <h3>점검 결과: 고위험 단계</h3>
+          <p>직장 내 괴롭힘 이슈로 확대될 가능성이 높아 보입니다.</p>
+          <p>사건 경위, 증거자료, 목격자, 피해 내용을 문서화하고 회사 내부 신고 절차나 전문가 상담을 검토하는 것이 좋습니다.</p>
+        `;
+      }
+    }
+  </script>
 </body>
 </html>
