@@ -93,6 +93,17 @@
       font-size: 16px;
     }
 
+    .secondary-button {
+      display: inline-block;
+      background: #111827;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 12px;
+    }
+
     .section {
       max-width: 1100px;
       margin: 0 auto;
@@ -189,6 +200,45 @@
       color: #991b1b;
     }
 
+    .product-box {
+      margin-top: 24px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .product-box h3 {
+      margin-top: 0;
+      font-size: 22px;
+      color: #0f172a;
+    }
+
+    .product-box p {
+      color: #475569;
+    }
+
+    .product-list {
+      background: white;
+      border-radius: 14px;
+      padding: 18px 22px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .product-list li {
+      margin: 8px 0;
+    }
+
+    .price-badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      font-weight: 800;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
     .notice {
       background: #fff7ed;
       border: 1px solid #fed7aa;
@@ -245,7 +295,7 @@
         <a href="#">징계·경고장</a>
         <a href="#">연차·근태</a>
         <a href="#">퇴사·임금</a>
-        <a href="#">문서양식</a>
+        <a href="#documents">문서양식</a>
       </nav>
     </div>
   </header>
@@ -355,6 +405,32 @@
         </form>
 
         <div id="resultBox" class="result"></div>
+
+        <div class="product-box" id="documents">
+          <span class="price-badge">문서양식 패키지 준비 중</span>
+          <h3>직장 내 괴롭힘 신고·조사 준비 패키지</h3>
+          <p>
+            체크리스트 결과를 바탕으로 사실관계와 증거자료를 정리할 수 있는
+            실무형 문서양식 패키지를 준비하고 있습니다.
+          </p>
+
+          <div class="product-list">
+            <strong>포함 예정 문서</strong>
+            <ul>
+              <li>직장 내 괴롭힘 신고서 양식</li>
+              <li>피해 사실 정리표</li>
+              <li>증거자료 정리표</li>
+              <li>사건 경위서 양식</li>
+              <li>조사 면담 질문지</li>
+              <li>관리자 초기 대응 체크리스트</li>
+            </ul>
+          </div>
+
+          <p>
+            향후 PDF, DOCX 형식으로 제공할 예정입니다.
+          </p>
+          <a class="secondary-button" href="#">준비 중입니다</a>
+        </div>
       </div>
     </section>
 
