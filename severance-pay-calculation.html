@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>퇴직금은 어떻게 계산할까? | 직장생활 해결소</title>
+  <style>
+    :root {
+      --navy: #172033;
+      --blue: #2563eb;
+      --gray: #64748b;
+      --line: #e2e8f0;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 28%),
+        linear-gradient(180deg, #fffaf0 0%, #f8fafc 55%, #ffffff 100%);
+      color: var(--navy);
+      line-height: 1.75;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--navy);
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 10px 20px rgba(23, 32, 51, 0.16);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-text strong {
+      font-size: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .menu {
+      display: flex;
+      gap: 16px;
+      font-size: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: #334155;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .menu a:hover {
+      color: var(--blue);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      padding: 46px 0;
+      align-items: start;
+    }
+
+    .article {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 38px;
+      box-shadow: var(--shadow);
+    }
+
+    .breadcrumb {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 42px;
+      line-height: 1.18;
+      letter-spacing: -1.5px;
+    }
+
+    .summary {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e3a8a;
+      border-radius: 18px;
+      padding: 20px;
+      font-weight: 700;
+      margin: 24px 0;
+    }
+
+    .article h2 {
+      margin: 38px 0 14px;
+      font-size: 28px;
+      letter-spacing: -0.7px;
+    }
+
+    .article h3 {
+      margin: 26px 0 10px;
+      font-size: 21px;
+    }
+
+    .article p {
+      color: #475569;
+      font-size: 17px;
+      margin: 0 0 16px;
+    }
+
+    .article ul,
+    .article ol {
+      color: #475569;
+      padding-left: 24px;
+      font-size: 17px;
+    }
+
+    .article li {
+      margin: 8px 0;
+    }
+
+    .formula-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      margin: 18px 0;
+    }
+
+    .formula-box strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #0f172a;
+      font-size: 18px;
+    }
+
+    .formula {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      font-weight: 900;
+      color: #1d4ed8;
+      margin-top: 10px;
+    }
+
+    .example-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+
+    .example-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .checklist-link {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+      border-radius: 22px;
+      padding: 24px;
+      margin-top: 34px;
+    }
+
+    .checklist-link h2 {
+      margin: 0 0 10px;
+      color: white;
+      font-size: 25px;
+    }
+
+    .checklist-link p {
+      color: #dbeafe;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 900;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      margin-right: 8px;
+      margin-top: 8px;
+    }
+
+    .btn-white {
+      background: white;
+      color: #1d4ed8;
+    }
+
+    .notice {
+      margin-top: 28px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: #9a3412;
+      font-weight: 700;
+    }
+
+    .side-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 92px;
+    }
+
+    .side-card h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .side-card p {
+      color: #475569;
+      margin: 0 0 16px;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .side-list a {
+      display: block;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      margin-top: 36px;
+      padding: 28px 0;
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: var(--gray);
+      margin-left: 12px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .article-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-card {
+        position: static;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .menu {
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .article {
+        padding: 26px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .article h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html">
+        <div class="brand-icon">✓</div>
+        <div class="brand-text">
+          <strong>직장생활 해결소</strong>
+          <span>무료 노무 체크리스트 & 문서양식</span>
+        </div>
+      </a>
+
+      <nav class="menu">
+        <a href="index.html#tools">무료도구</a>
+        <a href="index.html#checklist">체크리스트</a>
+        <a href="index.html#documents">무료양식</a>
+        <a href="about.html">소개</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="article-layout">
+      <article class="article">
+        <div class="breadcrumb">홈 &gt; 퇴사·임금 &gt; 퇴직금</div>
+        <span class="badge">퇴사·임금</span>
+
+        <h1>퇴직금은 어떻게 계산할까?</h1>
+
+        <p>
+          퇴사할 때 가장 많이 확인하는 것 중 하나가 퇴직금입니다.
+          하지만 “월급 × 근속연수”처럼 단순하게 생각하면 실제 금액과 차이가 날 수 있습니다.
+        </p>
+
+        <div class="summary">
+          결론부터 말하면, 퇴직금은 계속근로기간 1년에 대해 30일분 이상의 평균임금을 기준으로 계산합니다.
+          기본 공식은 “평균임금 × 30일 × 계속근로일수 ÷ 365”입니다.
+        </div>
+
+        <h2>1. 퇴직금을 받을 수 있는 기본 조건</h2>
+        <p>
+          일반적으로 퇴직금은 계속근로기간이 1년 이상인 근로자에게 발생합니다.
+          여기서 중요한 것은 단순히 입사일과 퇴사일만 보는 것이 아니라, 실제 계속근로기간이 어떻게 인정되는지입니다.
+        </p>
+
+        <p>
+          정규직, 계약직, 아르바이트 여부보다 중요한 것은 근로자로서 계속 근무한 기간과 근로시간 등입니다.
+          다만 구체적인 사안은 근로계약 형태, 근무기간, 소정근로시간 등에 따라 달라질 수 있습니다.
+        </p>
+
+        <h2>2. 퇴직금 기본 공식</h2>
+        <div class="formula-box">
+          <strong>퇴직금 산정 공식</strong>
+          <p>퇴직금은 평균임금과 계속근로일수를 기준으로 계산합니다.</p>
+          <div class="formula">퇴직금 = 평균임금 × 30일 × 계속근로일수 ÷ 365</div>
+        </div>
+
+        <p>
+          여기서 평균임금은 퇴직일 이전 3개월 동안 받은 임금총액을 그 기간의 총일수로 나누어 계산합니다.
+          예를 들어 퇴직 전 3개월 임금총액이 900만 원이고, 해당 기간 총일수가 90일이라면
+          1일 평균임금은 10만 원입니다.
+        </p>
+
+        <h2>3. 평균임금이란?</h2>
+        <p>
+          평균임금은 퇴직금 계산의 핵심입니다. 단순히 기본급만 보는 것이 아니라,
+          퇴직 전 3개월 동안 지급된 임금총액을 기준으로 계산합니다.
+        </p>
+
+        <div class="formula-box">
+          <strong>평균임금 산정 방식</strong>
+          <div class="formula">평균임금 = 퇴직 전 3개월 임금총액 ÷ 그 3개월의 총일수</div>
+        </div>
+
+        <p>
+          다만 평균임금이 통상임금보다 적은 경우에는 통상임금을 평균임금으로 봅니다.
+          그래서 단순히 3개월 임금만 나누는 것에서 끝나지 않고, 통상임금과 비교해야 하는 경우도 있습니다.
+        </p>
+
+        <h2>4. 계산 예시</h2>
+        <div class="example-box">
+          <strong>예시</strong>
+          <ul>
+            <li>퇴직 전 3개월 임금총액: 900만 원</li>
+            <li>퇴직 전 3개월 총일수: 90일</li>
+            <li>1일 평균임금: 100,000원</li>
+            <li>계속근로기간: 3년</li>
+          </ul>
+          <p>
+            이 경우 단순 계산하면 100,000원 × 30일 × 3년 = 9,000,000원이 됩니다.
+            실제 계산에서는 계속근로일수, 평균임금 산정 제외기간, 통상임금 비교 등을 함께 확인해야 합니다.
+          </p>
+        </div>
+
+        <h2>5. 퇴직금 계산에서 자주 헷갈리는 부분</h2>
+        <ul>
+          <li>세전 금액인지 세후 금액인지</li>
+          <li>상여금이나 수당이 평균임금에 포함되는지</li>
+          <li>육아휴직, 산재요양, 휴업 기간이 평균임금 계산에 어떤 영향을 주는지</li>
+          <li>퇴사일 직전 3개월에 임금이 일시적으로 줄었을 때 어떻게 보는지</li>
+          <li>1년을 조금 넘긴 경우 일할 계산이 되는지</li>
+          <li>퇴직연금 가입 사업장인지, 퇴직금 제도 사업장인지</li>
+        </ul>
+
+        <h2>6. 회사가 확인해야 할 부분</h2>
+        <p>
+          회사는 퇴직금을 계산할 때 단순히 월급 기준으로 계산하지 말고,
+          평균임금 산정기간, 임금총액, 제외기간, 통상임금 비교, 계속근로기간을 확인해야 합니다.
+        </p>
+
+        <p>
+          특히 퇴직 전 3개월에 휴직, 휴업, 산재요양, 출산전후휴가 등이 포함되어 있는 경우
+          평균임금 산정 방식이 달라질 수 있으므로 주의가 필요합니다.
+        </p>
+
+        <h2>7. 근로자가 확인해야 할 부분</h2>
+        <p>
+          퇴직금을 받을 때는 아래 항목을 확인해보는 것이 좋습니다.
+        </p>
+
+        <ol>
+          <li>입사일과 퇴사일이 정확히 반영되었는지</li>
+          <li>퇴직 전 3개월 임금총액이 맞는지</li>
+          <li>상여금, 수당 등 포함 여부가 적절한지</li>
+          <li>평균임금과 통상임금 비교가 필요한지</li>
+          <li>퇴직소득세 등 공제 내역이 설명되었는지</li>
+          <li>퇴직금 지급 예정일이 안내되었는지</li>
+        </ol>
+
+        <div class="checklist-link">
+          <h2>퇴직금 계산기도 추가할 예정입니다</h2>
+          <p>
+            현재는 퇴직금 계산 구조를 먼저 안내하고 있습니다.
+            이후 퇴직 전 3개월 임금과 근속기간을 입력하면 예상 퇴직금을 확인할 수 있는 계산기를 추가할 예정입니다.
+          </p>
+          <a class="btn btn-white" href="index.html">홈으로 이동</a>
+          <a class="btn btn-white" href="annual-leave-refusal.html">연차 글 보기</a>
+        </div>
+
+        <div class="notice">
+          본 글은 일반적인 정보 제공 목적이며, 개별 사건에 대한 법률 자문이 아닙니다.
+          실제 퇴직금은 계속근로기간, 평균임금 산정기간, 통상임금, 퇴직연금 가입 여부, 회사 규정 등에 따라 달라질 수 있습니다.
+          구체적인 사안은 공인노무사, 변호사 등 전문가 상담을 권장합니다.
+        </div>
+      </article>
+
+      <aside class="side-card">
+        <h2>관련 자료</h2>
+        <p>퇴사 전에는 임금과 근무기간 기록을 먼저 확인하세요.</p>
+
+        <div class="side-list">
+          <a href="annual-leave-refusal.html">연차 사용 거부는 불법일까?</a>
+          <a href="warning-dismissal.html">경고장 3번이면 해고될까?</a>
+          <a href="harassment-standard.html">직장 내 괴롭힘 기준은?</a>
+          <a href="contact.html">오류 제보 및 문의</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>© 2026 직장생활 해결소. All rights reserved.</div>
+      <div>
+        <a href="about.html">소개</a>
+        <a href="contact.html">문의</a>
+        <a href="privacy.html">개인정보처리방침</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
