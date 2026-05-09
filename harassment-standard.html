@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>직장 내 괴롭힘 기준은 무엇인가? | 직장생활 해결소</title>
+  <style>
+    :root {
+      --navy: #172033;
+      --blue: #2563eb;
+      --mint: #d1fae5;
+      --gray: #64748b;
+      --line: #e2e8f0;
+      --green: #059669;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 28%),
+        linear-gradient(180deg, #fffaf0 0%, #f8fafc 55%, #ffffff 100%);
+      color: var(--navy);
+      line-height: 1.75;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--navy);
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 10px 20px rgba(23, 32, 51, 0.16);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-text strong {
+      font-size: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .menu {
+      display: flex;
+      gap: 16px;
+      font-size: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: #334155;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .menu a:hover {
+      color: var(--blue);
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      padding: 46px 0;
+      align-items: start;
+    }
+
+    .article {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 38px;
+      box-shadow: var(--shadow);
+    }
+
+    .breadcrumb {
+      font-size: 14px;
+      color: var(--gray);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 42px;
+      line-height: 1.18;
+      letter-spacing: -1.5px;
+    }
+
+    .summary {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e3a8a;
+      border-radius: 18px;
+      padding: 20px;
+      font-weight: 700;
+      margin: 24px 0;
+    }
+
+    .article h2 {
+      margin: 38px 0 14px;
+      font-size: 28px;
+      letter-spacing: -0.7px;
+    }
+
+    .article h3 {
+      margin: 26px 0 10px;
+      font-size: 21px;
+    }
+
+    .article p {
+      color: #475569;
+      font-size: 17px;
+      margin: 0 0 16px;
+    }
+
+    .article ul,
+    .article ol {
+      color: #475569;
+      padding-left: 24px;
+      font-size: 17px;
+    }
+
+    .article li {
+      margin: 8px 0;
+    }
+
+    .example-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+
+    .example-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+
+    .checklist-link {
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+      color: white;
+      border-radius: 22px;
+      padding: 24px;
+      margin-top: 34px;
+    }
+
+    .checklist-link h2 {
+      margin: 0 0 10px;
+      color: white;
+      font-size: 25px;
+    }
+
+    .checklist-link p {
+      color: #dbeafe;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 900;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      margin-right: 8px;
+      margin-top: 8px;
+    }
+
+    .btn-white {
+      background: white;
+      color: #1d4ed8;
+    }
+
+    .btn-dark {
+      background: var(--navy);
+      color: white;
+    }
+
+    .notice {
+      margin-top: 28px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 18px;
+      padding: 18px 20px;
+      color: #9a3412;
+      font-weight: 700;
+    }
+
+    .side-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 92px;
+    }
+
+    .side-card h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .side-card p {
+      color: #475569;
+      margin: 0 0 16px;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .side-list a {
+      display: block;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      margin-top: 36px;
+      padding: 28px 0;
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: var(--gray);
+      margin-left: 12px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      .article-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-card {
+        position: static;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .menu {
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .article {
+        padding: 26px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .article h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html">
+        <div class="brand-icon">✓</div>
+        <div class="brand-text">
+          <strong>직장생활 해결소</strong>
+          <span>무료 노무 체크리스트 & 문서양식</span>
+        </div>
+      </a>
+
+      <nav class="menu">
+        <a href="index.html#tools">무료도구</a>
+        <a href="index.html#checklist">체크리스트</a>
+        <a href="index.html#documents">무료양식</a>
+        <a href="about.html">소개</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="article-layout">
+      <article class="article">
+        <div class="breadcrumb">홈 &gt; 직장 내 괴롭힘 &gt; 판단 기준</div>
+        <span class="badge">직장 내 괴롭힘</span>
+
+        <h1>직장 내 괴롭힘 기준은 무엇인가?</h1>
+
+        <p>
+          직장 내 괴롭힘은 단순히 기분이 나빴다는 이유만으로 바로 인정되는 것은 아닙니다.
+          중요한 것은 행위의 내용, 반복성, 업무상 필요성, 피해 정도, 증거자료입니다.
+        </p>
+
+        <div class="summary">
+          결론부터 말하면, 직장 내 괴롭힘은 보통 ① 직장에서의 지위 또는 관계 우위,
+          ② 업무상 적정 범위를 넘는 행위, ③ 신체적·정신적 고통 또는 근무환경 악화 여부를 중심으로 판단합니다.
+        </div>
+
+        <h2>1. 직장 내 괴롭힘 판단의 핵심 기준</h2>
+        <p>
+          직장 내 괴롭힘 여부를 볼 때는 한 가지 요소만 보는 것이 아니라 여러 요소를 종합해서 봅니다.
+          특히 다음 세 가지가 핵심입니다.
+        </p>
+
+        <ol>
+          <li>상급자, 선임, 영향력 있는 동료 등 관계상 우위가 있었는지</li>
+          <li>그 말이나 행동이 업무상 필요한 수준을 넘었는지</li>
+          <li>그로 인해 정신적 고통이나 근무환경 악화가 발생했는지</li>
+        </ol>
+
+        <p>
+          따라서 “상사가 싫은 말을 했다”는 사실만으로는 부족할 수 있습니다.
+          어떤 상황에서, 어떤 말이, 어느 정도 반복되었고, 실제로 어떤 피해가 있었는지를 함께 정리해야 합니다.
+        </p>
+
+        <h2>2. 업무상 적정 범위를 넘는다는 뜻</h2>
+        <p>
+          회사에서는 업무지시, 피드백, 평가, 주의 조치가 있을 수 있습니다.
+          문제는 그 과정이 필요한 수준을 넘어 인격적 모욕, 공개 망신, 반복적 배제, 과도한 압박으로 이어지는 경우입니다.
+        </p>
+
+        <div class="example-box">
+          <strong>문제가 될 가능성이 있는 예시</strong>
+          <ul>
+            <li>회의 때마다 특정 직원을 공개적으로 모욕하는 경우</li>
+            <li>업무상 필요 없이 반복적으로 소리를 지르거나 인격을 비하하는 경우</li>
+            <li>정당한 이유 없이 특정 직원을 업무에서 배제하는 경우</li>
+            <li>사적인 심부름이나 업무와 무관한 지시를 반복하는 경우</li>
+            <li>단체 메신저에서 특정인을 조롱하거나 망신 주는 경우</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <strong>괴롭힘으로 단정하기 어려울 수 있는 예시</strong>
+          <ul>
+            <li>업무 실수에 대해 필요한 범위에서 지적한 경우</li>
+            <li>성과 개선을 위해 구체적인 피드백을 제공한 경우</li>
+            <li>업무상 필요한 일정 조정이나 역할 변경을 지시한 경우</li>
+            <li>회사 규정에 따른 근태 관리나 주의 조치를 한 경우</li>
+          </ul>
+        </div>
+
+        <h2>3. 반복성이 중요한 이유</h2>
+        <p>
+          직장 내 괴롭힘은 한 번의 행위로도 문제될 수 있지만, 실무에서는 반복성과 지속성이 중요한 판단 요소가 됩니다.
+          같은 유형의 폭언, 모욕, 따돌림, 업무배제가 반복되었다면 문제 제기 가능성이 높아집니다.
+        </p>
+
+        <p>
+          따라서 사건을 정리할 때는 “언제부터”, “얼마나 자주”, “어떤 방식으로” 발생했는지 기록하는 것이 중요합니다.
+        </p>
+
+        <h2>4. 신고 전 준비해야 할 자료</h2>
+        <p>
+          신고를 고민하고 있다면 감정적인 문장보다 사실관계를 먼저 정리해야 합니다.
+          아래 자료가 있으면 상황 설명이 훨씬 명확해집니다.
+        </p>
+
+        <ul>
+          <li>사건 발생 일시와 장소</li>
+          <li>구체적인 발언 또는 행동 내용</li>
+          <li>카카오톡, 문자, 이메일, 사내 메신저 캡처</li>
+          <li>회의 녹음, 통화 녹음, 사진, 영상 등 자료</li>
+          <li>목격자 성명과 목격 내용</li>
+          <li>피해 내용: 불안, 수면장애, 업무 집중 곤란, 진료 기록 등</li>
+          <li>회사에 요청하고 싶은 조치</li>
+        </ul>
+
+        <h2>5. 회사와 관리자도 조심해야 할 점</h2>
+        <p>
+          관리자는 업무상 지시와 괴롭힘의 경계를 특히 조심해야 합니다.
+          지적이나 피드백이 필요하더라도 공개적인 망신, 인격 비하, 감정적 표현은 피해야 합니다.
+        </p>
+
+        <p>
+          면담이나 주의 조치를 할 때는 사실관계, 업무상 필요성, 개선 요청사항, 향후 조치 방향을 기록으로 남기는 것이 좋습니다.
+        </p>
+
+        <h2>6. 혼자 판단하기 어렵다면 체크리스트부터 확인하세요</h2>
+        <p>
+          직장 내 괴롭힘 여부는 개별 사안에 따라 달라질 수 있습니다.
+          먼저 간단한 체크리스트로 현재 상황을 정리해보는 것이 좋습니다.
+        </p>
+
+        <div class="checklist-link">
+          <h2>무료 체크리스트와 신고서 양식</h2>
+          <p>
+            5문항 체크리스트로 상황을 점검하고, 필요한 경우 무료 신고서 양식을 내려받아 사실관계를 정리할 수 있습니다.
+          </p>
+          <a class="btn btn-white" href="index.html#checklist">체크리스트 시작하기</a>
+          <a class="btn btn-white" href="index.html#documents">무료 양식 받기</a>
+        </div>
+
+        <div class="notice">
+          본 글은 일반적인 정보 제공 목적이며, 개별 사건에 대한 법률 자문이 아닙니다.
+          실제 판단은 구체적인 사실관계, 회사 규정, 조사 결과, 관련 법령에 따라 달라질 수 있습니다.
+          구체적인 사안은 공인노무사, 변호사 등 전문가 상담을 권장합니다.
+        </div>
+      </article>
+
+      <aside class="side-card">
+        <h2>바로 사용할 수 있는 도구</h2>
+        <p>현재 상황을 먼저 정리해보세요.</p>
+
+        <div class="side-list">
+          <a href="index.html#checklist">직장 내 괴롭힘 체크리스트</a>
+          <a href="index.html#documents">신고서 양식 무료 다운로드</a>
+          <a href="about.html">사이트 소개 보기</a>
+          <a href="contact.html">오류 제보 및 문의</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>© 2026 직장생활 해결소. All rights reserved.</div>
+      <div>
+        <a href="about.html">소개</a>
+        <a href="contact.html">문의</a>
+        <a href="privacy.html">개인정보처리방침</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
