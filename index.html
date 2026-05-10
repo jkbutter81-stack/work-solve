@@ -534,9 +534,9 @@
       margin: 7px 0;
     }
 
-    .calculator-grid {
+   .calculator-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
@@ -800,9 +800,9 @@
 
         <div class="tool-card">
   <span class="tool-badge badge-orange">사용 가능</span>
-  <h3>연차·퇴직금 계산기</h3>
-  <p>근속기간과 임금 정보를 입력해 예상 연차와 퇴직금을 간단히 확인합니다.</p>
-  <a class="btn btn-light" href="#calculators">계산기 사용</a>
+  <h3>연차·퇴직금·해고예고수당 계산기</h3>
+<p>입사일, 퇴사일, 통상임금 정보를 입력해 예상 연차, 퇴직금, 해고예고수당을 확인합니다.</p>
+<a class="btn btn-light" href="#calculators">계산기 사용</a>
 </div>
       </div>
     </section>
@@ -901,6 +901,40 @@
 
       <div class="calc-note">
         ※ 퇴직일 이전 3개월 기간을 기준으로 단순 계산합니다. 평균임금 제외기간, 통상임금 비교, 상여금·수당 포함 여부 등에 따라 실제 퇴직금은 달라질 수 있습니다.
+      </div>
+    </div>
+
+        <div class="calculator-box">
+      <h3>해고예고수당 계산기</h3>
+      <p>해고 통보일과 해고 예정일, 1일 통상임금을 입력하면 예상 해고예고수당을 계산합니다.</p>
+
+      <div class="form-row">
+        <label for="dismissalJoinDate">입사일</label>
+        <input type="date" id="dismissalJoinDate" />
+      </div>
+
+      <div class="form-row">
+        <label for="noticeDate">해고 통보일</label>
+        <input type="date" id="noticeDate" />
+      </div>
+
+      <div class="form-row">
+        <label for="dismissalDate">해고 예정일</label>
+        <input type="date" id="dismissalDate" />
+      </div>
+
+      <div class="form-row">
+        <label for="dailyOrdinaryWage">1일 통상임금</label>
+        <input type="number" id="dailyOrdinaryWage" placeholder="예: 100000" />
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="calculateDismissalNoticePay()">해고예고수당 계산하기</button>
+
+      <div id="dismissalNoticePayResult" class="calc-result"></div>
+
+      <div class="calc-note">
+        ※ 해고예고수당은 원칙적으로 30일 전에 해고예고를 하지 않은 경우 30일분 이상의 통상임금을 기준으로 합니다.
+        계속근로기간 3개월 미만 등 예외 사유가 있을 수 있으므로 참고용으로만 사용하세요.
       </div>
     </div>
   </div>
@@ -1187,6 +1221,74 @@ function calculateSeverancePay() {
     계산식: 1일 평균임금 × 30일 × 재직일수 ÷ 365
   `;
 }
+
+function calculateDismissalNoticePay() {
+  const joinDateValue = document.getElementById("dismissalJoinDate").value;
+  const noticeDateValue = document.getElementById("noticeDate").value;
+  const dismissalDateValue = document.getElementById("dismissalDate").value;
+  const dailyOrdinaryWage = Number(document.getElementById("dailyOrdinaryWage").value);
+  const resultBox = document.getElementById("dismissalNoticePayResult");
+
+  if (!joinDateValue || !noticeDateValue || !dismissalDateValue || !dailyOrdinaryWage) {
+    resultBox.style.display = "block";
+    resultBox.innerHTML = "<strong>입력 확인</strong>입사일, 해고 통보일, 해고 예정일, 1일 통상임금을 모두 입력해주세요.";
+    return;
+  }
+
+  const joinDate = new Date(joinDateValue);
+  const noticeDate = new Date(noticeDateValue);
+  const dismissalDate = new Date(dismissalDateValue);
+
+  if (noticeDate < joinDate) {
+    resultBox.style.display = "block";
+    resultBox.innerHTML = "<strong>입력 확인</strong>해고 통보일은 입사일보다 뒤여야 합니다.";
+    return;
+  }
+
+  if (dismissalDate <= noticeDate) {
+    resultBox.style.display = "block";
+    resultBox.innerHTML = "<strong>입력 확인</strong>해고 예정일은 해고 통보일보다 뒤여야 합니다.";
+    return;
+  }
+
+  const workedDaysUntilNotice =
+    Math.floor((noticeDate.getTime() - joinDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+
+  const noticePeriodDays =
+    Math.floor((dismissalDate.getTime() - noticeDate.getTime()) / (1000 * 60 * 60 * 24));
+
+  if (workedDaysUntilNotice < 90) {
+    resultBox.style.display = "block";
+    resultBox.innerHTML = `
+      <strong>계속근로기간 3개월 미만 가능성</strong>
+      입사일부터 해고 통보일까지의 근로기간은 ${formatNumber(workedDaysUntilNotice)}일입니다.<br />
+      근로기준법상 계속 근로한 기간이 3개월 미만인 경우 해고예고 예외에 해당할 수 있습니다.<br />
+      실제 적용 여부는 구체적인 사실관계를 확인해야 합니다.
+    `;
+    return;
+  }
+
+  let requiredPay = 0;
+  let message = "";
+
+  if (noticePeriodDays >= 30) {
+    requiredPay = 0;
+    message = "해고 예정일이 해고 통보일로부터 30일 이상 뒤입니다. 입력값 기준으로는 해고예고수당 발생 가능성이 낮습니다.";
+  } else {
+    requiredPay = dailyOrdinaryWage * 30;
+    message = "해고예고기간이 30일 미만입니다. 입력값 기준으로 30일분 통상임금 상당의 해고예고수당을 예상할 수 있습니다.";
+  }
+
+  resultBox.style.display = "block";
+  resultBox.innerHTML = `
+    <strong>예상 해고예고수당: ${formatNumber(requiredPay)}원</strong>
+    입사일~해고 통보일까지 근로일수: ${formatNumber(workedDaysUntilNotice)}일<br />
+    해고예고기간: ${formatNumber(noticePeriodDays)}일<br />
+    1일 통상임금: ${formatNumber(dailyOrdinaryWage)}원<br />
+    계산 기준: ${message}
+  `;
+}
+    
     function showResult() {
       let score = 0;
       let unanswered = [];
