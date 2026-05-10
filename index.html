@@ -800,8 +800,8 @@
 
         <div class="tool-card">
   <span class="tool-badge badge-orange">사용 가능</span>
-  <h3>연차·퇴직금·해고예고수당 계산기</h3>
-<p>입사일, 퇴사일, 통상임금 정보를 입력해 예상 연차, 퇴직금, 해고예고수당을 확인합니다.</p>
+  <h3>연차·퇴직금·통상임금 계산기</h3>
+<p>입사일, 퇴사일, 임금 정보를 입력해 예상 연차, 퇴직금, 통상임금과 해고예고수당을 확인합니다.</p>
 <a class="btn btn-light" href="#calculators">계산기 사용</a>
 </div>
       </div>
@@ -905,38 +905,41 @@
     </div>
 
         <div class="calculator-box">
-      <h3>해고예고수당 계산기</h3>
-      <p>해고 통보일과 해고 예정일, 1일 통상임금을 입력하면 예상 해고예고수당을 계산합니다.</p>
+  <h3>통상임금·해고예고수당 계산기</h3>
+  <p>
+    월 통상임금과 소정근로시간을 입력하면 시간급, 1일 통상임금,
+    해고예고수당 예상액을 계산합니다.
+  </p>
 
-      <div class="form-row">
-        <label for="dismissalJoinDate">입사일</label>
-        <input type="date" id="dismissalJoinDate" />
-      </div>
+  <div class="form-row">
+    <label for="monthlyOrdinaryWage">월 통상임금</label>
+    <input type="number" id="monthlyOrdinaryWage" placeholder="예: 3000000" />
+  </div>
 
-      <div class="form-row">
-        <label for="noticeDate">해고 통보일</label>
-        <input type="date" id="noticeDate" />
-      </div>
-
-      <div class="form-row">
-        <label for="dismissalDate">해고 예정일</label>
-        <input type="date" id="dismissalDate" />
-      </div>
-
-      <div class="form-row">
-        <label for="dailyOrdinaryWage">1일 통상임금</label>
-        <input type="number" id="dailyOrdinaryWage" placeholder="예: 100000" />
-      </div>
-
-      <button type="button" class="btn btn-primary" onclick="calculateDismissalNoticePay()">해고예고수당 계산하기</button>
-
-      <div id="dismissalNoticePayResult" class="calc-result"></div>
-
-      <div class="calc-note">
-        ※ 해고예고수당은 원칙적으로 30일 전에 해고예고를 하지 않은 경우 30일분 이상의 통상임금을 기준으로 합니다.
-        계속근로기간 3개월 미만 등 예외 사유가 있을 수 있으므로 참고용으로만 사용하세요.
-      </div>
+  <div class="form-row">
+    <label for="monthlyStandardHours">월 소정근로시간</label>
+    <input type="number" id="monthlyStandardHours" value="209" />
+    <div class="calc-note">
+      ※ 주 40시간 근무자는 보통 209시간을 많이 사용합니다. 근무형태가 다르면 회사 기준에 맞게 수정하세요.
     </div>
+  </div>
+
+  <div class="form-row">
+    <label for="dailyStandardHours">1일 소정근로시간</label>
+    <input type="number" id="dailyStandardHours" value="8" />
+  </div>
+
+  <button type="button" class="btn btn-primary" onclick="calculateOrdinaryWage()">
+    통상임금 계산하기
+  </button>
+
+  <div id="ordinaryWageResult" class="calc-result"></div>
+
+  <div class="calc-note">
+    ※ 이 계산기는 단순 참고용입니다. 실제 통상임금은 기본급, 고정수당, 정기성·일률성·고정성,
+    임금 항목과 근무형태에 따라 달라질 수 있습니다.
+  </div>
+</div>
   </div>
 </section>
     <section class="container section" id="checklist">
@@ -1222,70 +1225,37 @@ function calculateSeverancePay() {
   `;
 }
 
-function calculateDismissalNoticePay() {
-  const joinDateValue = document.getElementById("dismissalJoinDate").value;
-  const noticeDateValue = document.getElementById("noticeDate").value;
-  const dismissalDateValue = document.getElementById("dismissalDate").value;
-  const dailyOrdinaryWage = Number(document.getElementById("dailyOrdinaryWage").value);
-  const resultBox = document.getElementById("dismissalNoticePayResult");
+function calculateOrdinaryWage() {
+  const monthlyOrdinaryWage = Number(document.getElementById("monthlyOrdinaryWage").value);
+  const monthlyStandardHours = Number(document.getElementById("monthlyStandardHours").value);
+  const dailyStandardHours = Number(document.getElementById("dailyStandardHours").value);
+  const resultBox = document.getElementById("ordinaryWageResult");
 
-  if (!joinDateValue || !noticeDateValue || !dismissalDateValue || !dailyOrdinaryWage) {
+  if (!monthlyOrdinaryWage || !monthlyStandardHours || !dailyStandardHours) {
     resultBox.style.display = "block";
-    resultBox.innerHTML = "<strong>입력 확인</strong>입사일, 해고 통보일, 해고 예정일, 1일 통상임금을 모두 입력해주세요.";
+    resultBox.innerHTML = "<strong>입력 확인</strong>월 통상임금, 월 소정근로시간, 1일 소정근로시간을 모두 입력해주세요.";
     return;
   }
 
-  const joinDate = new Date(joinDateValue);
-  const noticeDate = new Date(noticeDateValue);
-  const dismissalDate = new Date(dismissalDateValue);
-
-  if (noticeDate < joinDate) {
+  if (monthlyOrdinaryWage <= 0 || monthlyStandardHours <= 0 || dailyStandardHours <= 0) {
     resultBox.style.display = "block";
-    resultBox.innerHTML = "<strong>입력 확인</strong>해고 통보일은 입사일보다 뒤여야 합니다.";
+    resultBox.innerHTML = "<strong>입력 확인</strong>입력값은 0보다 커야 합니다.";
     return;
   }
 
-  if (dismissalDate <= noticeDate) {
-    resultBox.style.display = "block";
-    resultBox.innerHTML = "<strong>입력 확인</strong>해고 예정일은 해고 통보일보다 뒤여야 합니다.";
-    return;
-  }
-
-  const workedDaysUntilNotice =
-    Math.floor((noticeDate.getTime() - joinDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
-
-  const noticePeriodDays =
-    Math.floor((dismissalDate.getTime() - noticeDate.getTime()) / (1000 * 60 * 60 * 24));
-
-  if (workedDaysUntilNotice < 90) {
-    resultBox.style.display = "block";
-    resultBox.innerHTML = `
-      <strong>계속근로기간 3개월 미만 가능성</strong>
-      입사일부터 해고 통보일까지의 근로기간은 ${formatNumber(workedDaysUntilNotice)}일입니다.<br />
-      근로기준법상 계속 근로한 기간이 3개월 미만인 경우 해고예고 예외에 해당할 수 있습니다.<br />
-      실제 적용 여부는 구체적인 사실관계를 확인해야 합니다.
-    `;
-    return;
-  }
-
-  let requiredPay = 0;
-  let message = "";
-
-  if (noticePeriodDays >= 30) {
-    requiredPay = 0;
-    message = "해고 예정일이 해고 통보일로부터 30일 이상 뒤입니다. 입력값 기준으로는 해고예고수당 발생 가능성이 낮습니다.";
-  } else {
-    requiredPay = dailyOrdinaryWage * 30;
-    message = "해고예고기간이 30일 미만입니다. 입력값 기준으로 30일분 통상임금 상당의 해고예고수당을 예상할 수 있습니다.";
-  }
+  const hourlyOrdinaryWage = monthlyOrdinaryWage / monthlyStandardHours;
+  const dailyOrdinaryWage = hourlyOrdinaryWage * dailyStandardHours;
+  const dismissalNoticePay = dailyOrdinaryWage * 30;
 
   resultBox.style.display = "block";
   resultBox.innerHTML = `
-    <strong>예상 해고예고수당: ${formatNumber(requiredPay)}원</strong>
-    입사일~해고 통보일까지 근로일수: ${formatNumber(workedDaysUntilNotice)}일<br />
-    해고예고기간: ${formatNumber(noticePeriodDays)}일<br />
+    <strong>해고예고수당 예상액: ${formatNumber(dismissalNoticePay)}원</strong>
+    월 통상임금: ${formatNumber(monthlyOrdinaryWage)}원<br />
+    시간급 통상임금: ${formatNumber(hourlyOrdinaryWage)}원<br />
     1일 통상임금: ${formatNumber(dailyOrdinaryWage)}원<br />
-    계산 기준: ${message}
+    1개월 통상임금: ${formatNumber(monthlyOrdinaryWage)}원<br />
+    계산식: 시간급 통상임금 × 1일 소정근로시간 × 30일<br /><br />
+    30일 전에 해고예고를 받지 못한 경우, 입력한 통상임금 기준으로 위 금액을 해고예고수당 예상액으로 볼 수 있습니다.
   `;
 }
     
